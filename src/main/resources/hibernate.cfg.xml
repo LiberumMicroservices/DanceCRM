@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/dance_lessons?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8</property>
+    <!--<property name="connection.url">jdbc:mysql://localhost:3306/dance_lessons</property>-->
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+    <!-- NOTE that after automapping with IDEA property username and password will delete -->
+    <!--and will be:  Initial SessionFactory failedorg.hibernate.service.spi.ServiceException: Unable to create requested service-->
+    <property name="connection.username">root</property>
+    <property name="connection.password"/>
+
+
+
+    <!-- DB schema will be updated if needed -->
+     <property name="hbm2ddl.auto">create</property>
+
+    <!--<mapping class="dto.Attendance" />-->
+    <mapping class="modules.courses.dto.Course" />
+    <!--<mapping class="dto.Discount" />-->
+    <!--<mapping class="dto.Payment" />-->
+    <!--<mapping class="modules.students.dto.Student" />-->
+    <!--<mapping class="dto.Teacher" />-->
+
+  </session-factory>
+</hibernate-configuration>
