@@ -4,7 +4,7 @@ import modules.courses.dto.Course;
 
 import java.util.List;
 
-public interface Courses {
+public interface CoursesDao {
     List<Course> allCourses();
     Course getCourse(int id);
     Course getCourse(String title);

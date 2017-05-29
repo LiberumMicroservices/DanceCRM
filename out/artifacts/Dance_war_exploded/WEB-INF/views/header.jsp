@@ -32,7 +32,7 @@
         <a href="wellcome.do" class="navbar-brand" role="button">Home</a>
         <a href="students.do" class="navbar-brand" role="button">Students</a>
         <a href="courses.do" class="navbar-brand" role="button">Courses</a>
-        <a href="teachers.do" class="navbar-brand" role="button">Teacher</a>
+        <a href="#" class="navbar-brand" role="button">Teacher</a>
         <a href="#" class="navbar-brand" role="button">Billing</a>
     </nav>
 </div>

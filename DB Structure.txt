@@ -1,0 +1,60 @@
+Вопросы:
+1. перенос занятий
+
+ --- STUDENTS ---
+1. id
+2. f_name
+3. l_name
+4. birthday
+5. adress
+6. phone
+7. phone2
+8. email
+9. skype
+10.comment
+11.course_id
+ ----------------
+
+ --- TEACHERS ---
+1. id
+2. f_name
+3. l_name
+4. birthday
+5. adress
+6. phone
+7. phone2
+8. email
+9. skype
+10.comment
+11.course_id
+ ----------------
+
+ --- COURSES ---
+1. id
+2. title
+3. subtitle
+4. description
+5. start_date
+6. end_date
+7. price
+ ---------------
+
+ --- ATTENDANCE ---
+1. id
+2. date
+3. student_id
+4. status (boolean)
+ ------------------
+
+ --- DISCOUNT ---
+1. id
+2. course_id
+3. student_id
+3. discount
+ ----------------
+
+ --- PAYMENTS ---
+1. id
+2. date
+3. student_id
+ ----------------

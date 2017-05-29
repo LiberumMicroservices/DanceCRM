@@ -1,26 +1,31 @@
 package modules.courses.dto;
 
+import modules.students.dto.Student;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name="Course")
 public class Course {
+
+    //TODO add activate-deactivate
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Basic
-    @Column(name = "title", nullable = false, insertable = true, updatable = true, length = 60)
+    @Column(name = "title", nullable = true, insertable = true, updatable = true, length = 60)
     private String title;
 
     @Basic
-    @Column(name = "subtitle", nullable = false, insertable = true, updatable = true, length = 100)
+    @Column(name = "subtitle", nullable = true, insertable = true, updatable = true, length = 100)
     private String subtitle;
 
     @Basic
-    @Column(name = "description", nullable = false, insertable = true, updatable = true, length = 260)
+    @Column(name = "description", nullable = true, insertable = true, updatable = true, length = 1260)
     private String description;
 
     @Column
@@ -29,18 +34,23 @@ public class Course {
     @Column
     private LocalDate endDate;
 
-    @Column(name = "price", nullable = false, insertable = true, updatable = true)
+    @Column(name = "price", nullable = true, insertable = true, updatable = true)
     private int price;
+
+//    @ManyToMany (fetch = FetchType.LAZY)
+    @ManyToMany (fetch = FetchType.EAGER)
+    private Set<Student> students;
 
     public Course() { }
 
-    public Course(String title, String subtitle, String description, LocalDate startDate, LocalDate endDate, int price) {
+    public Course(String title, String subtitle, String description, LocalDate startDate, LocalDate endDate, int price, Set<Student> students) {
         this.title = title;
         this.subtitle = subtitle;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.price = price;
+        this.students = students;
     }
 
     public int getId() {
@@ -99,6 +109,18 @@ public class Course {
         this.price = price;
     }
 
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
+
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,6 +133,7 @@ public class Course {
         if (subtitle != null ? !subtitle.equals(course.subtitle) : course.subtitle != null) return false;
         if (description != null ? !description.equals(course.description) : course.description != null) return false;
         if (startDate != null ? !startDate.equals(course.startDate) : course.startDate != null) return false;
+        if (students != null ? !students.equals(course.students) : course.students != null) return false;
         return endDate != null ? endDate.equals(course.endDate) : course.endDate == null;
 
     }
@@ -136,6 +159,7 @@ public class Course {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", price=" + price +
+                ", students=" + students.size() +
                 '}';
     }
 }
